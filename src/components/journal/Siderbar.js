@@ -1,11 +1,12 @@
-import { Box, Divider, Flex, Heading, Spacer, Stack } from '@chakra-ui/react'
+import { Box, Divider, Flex, Heading, Spacer } from '@chakra-ui/react'
 import * as React from 'react'
 
-import { NavLink } from './NavLink' 
+import { NavLinks } from './NavLinks' 
 import { UserProfile } from './UserProfile'
 
 
 export const Siderbar = () => {
+  
   return (
     <Flex
         h={{base: 'auto', md: '100vh'}}       
@@ -23,7 +24,7 @@ export const Siderbar = () => {
         
         <Divider display={{base: 'none', md: 'inherit'}} borderColor="whiteAlpha.400" /> 
         
-        <NavLink 
+        <NavLinks 
           label="People" 
           // isActive 
           display="block"

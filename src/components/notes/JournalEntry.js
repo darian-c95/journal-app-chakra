@@ -24,8 +24,8 @@ export const JournalEntry = () => {
           md: 'base',
         }}
       >
-        <Stack spacing="4">
-          <Image 
+        <Stack>
+          <Image  
             boxSize='100%'
             objectFit='cover'
             borderRadius='base'
