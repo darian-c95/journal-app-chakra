@@ -10,16 +10,54 @@ import {
     Flex,
     Heading,
     Link,
-    useColorModeValue as mode
+    useColorModeValue as mode, 
+    FormErrorMessage
   } from '@chakra-ui/react'
   
 import { FcGoogle } from 'react-icons/fc' 
-import * as React from 'react'
+import * as React from 'react' 
+import validator from 'validator';
 
 import { DividerWithText } from './DividerWithText'
+import { useForm } from '../../hooks/useForm'
 
 
 export const RegisterScreen = () => {
+
+    const [formValues, handleInputChange] = useForm({
+        name: 'Bullion',
+        email: 'bullion@gmail.com',
+        password: '76543210',
+        password2: '76543210',
+    });
+
+    const {name, email, password, password2} = formValues;
+
+    const handleRegister = (e) => {
+        e.preventDefault();
+        console.log(name, email, password, password2)
+    }
+
+     
+    const isError = name === ''
+
+
+    const isEmailValid = () => {
+        if(!validator.isEmail(email)) {  
+          return false;
+        }  
+    
+        return true;
+    }
+
+    const isPasswordValid = () => {
+        if(password !== password2 || password.length < 5) {  
+            return false;
+        } 
+
+        return true;
+    }
+
   return (  
     <Flex 
         bg='#F7FAFC'
@@ -40,25 +78,60 @@ export const RegisterScreen = () => {
             borderColor={mode('gray.200', 'transparent')}
             shadow={{ md: 'lg' }}  
         >
-            <form
-                onSubmit={(e) => {
-                    e.preventDefault() 
-                }}
-            >
+            <form onSubmit={handleRegister}>
                 <Stack spacing="4">
-                    <FormControl isRequired> 
+                    <FormControl isInvalid={isError}> 
                         <FormLabel mb={1}>Name</FormLabel>  
-                        <Input placeholder="Enter your name" autoComplete="name" />
+                        <Input 
+                            placeholder="Enter your name" 
+                            name='name'
+                            type="text" 
+                            value={name} 
+                            onChange={handleInputChange} 
+                            autoComplete="name" 
+                        />
+                        {isError && <FormErrorMessage>Name is required.</FormErrorMessage>}
                     </FormControl>
-                    <FormControl isRequired>
+
+                    <FormControl isInvalid={!isEmailValid()}>
                         <FormLabel mb={1}>Email</FormLabel>
-                        <Input placeholder="Enter your email" type="email" autoComplete="email" required />
+                        <Input 
+                            name='email'
+                            type="email" 
+                            value={email} 
+                            onChange={handleInputChange} 
+                            placeholder="Enter your email"  
+                            autoComplete="email"  
+                        />
+                        {!isEmailValid() && <FormErrorMessage>Email is not valid.</FormErrorMessage>}
                     </FormControl>
-                    <FormControl isRequired> 
+
+                    <FormControl> 
                         <FormLabel mb={1}>Password</FormLabel> 
-                        <Input placeholder="***********" type="password" autoComplete="current-password" />
+                        <Input 
+                            name= 'password' 
+                            type="password" 
+                            value={password} 
+                            onChange={handleInputChange} 
+                            placeholder="***********"   
+                            autoComplete="current-password" 
+                        />
                         <Text mt={2} color='#4a5568' fontSize="sm">At least 8 characters long</Text>
                     </FormControl>
+
+                    <FormControl isInvalid={!isPasswordValid()}> 
+                        <FormLabel mb={1}>Password Confirm</FormLabel> 
+                        <Input 
+                            name= 'password2' 
+                            type="password" 
+                            value={password2} 
+                            onChange={handleInputChange} 
+                            placeholder="***********"  
+                            autoComplete="current-password" 
+                        />
+                        {!isPasswordValid() && <FormErrorMessage>Password should be at least 6 characters and match each other.</FormErrorMessage>}
+                    </FormControl>
+                    
                     <Button type="submit" colorScheme="blue" size="lg" fontSize="md">
                         Create account
                     </Button>
