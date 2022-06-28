@@ -5,7 +5,7 @@ const theme = extendTheme({
     fonts: {
         headings: `Montserrat, ${base.fonts?.heading}`,
         body: `Inter, ${base.fonts?.body}`,
-    }, 
+    },
 });
 
 export default theme;

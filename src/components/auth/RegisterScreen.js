@@ -17,12 +17,16 @@ import {
 import { FcGoogle } from 'react-icons/fc' 
 import * as React from 'react' 
 import validator from 'validator';
+import { useDispatch } from 'react-redux';
 
 import { DividerWithText } from './DividerWithText'
 import { useForm } from '../../hooks/useForm'
+import { starRegisterWithEmailPasswordName } from '../../actions/auth';
 
 
 export const RegisterScreen = () => {
+    
+    const dispatch = useDispatch();
 
     const [formValues, handleInputChange] = useForm({
         name: 'Bullion',
@@ -35,7 +39,8 @@ export const RegisterScreen = () => {
 
     const handleRegister = (e) => {
         e.preventDefault();
-        console.log(name, email, password, password2)
+        
+        dispatch(starRegisterWithEmailPasswordName(email, password, name)) 
     }
 
      

@@ -5,9 +5,13 @@ import { Grid, SimpleGrid } from '@chakra-ui/react'
 import { Siderbar } from '../components/journal/Siderbar'
 import { NoteScreen } from '../components/notes/NoteScreen' 
 import { JournalEntries } from '../components/notes/JournalEntries'
+import { useSelector } from 'react-redux'
+import { NothingSelected } from '../components/journal/NothingSelected'  
 
 
 export const SidebarRoutes = () => {
+
+  const {notes} = useSelector( state => state.notes );  
 
   return ( 
     <Grid
@@ -22,10 +26,15 @@ export const SidebarRoutes = () => {
 
       <SimpleGrid gridArea={{base: '0', md: "1/2/2/3"}} mx={{base: '0', md: '4'}} my={{base: '4', md: '0'}} align-items='center' minChildWidth='400px' spacing='40px'>
 
-      <Switch>
-        <Route exact path="/home" component={ JournalEntries } /> 
-        <Route exact path="/newEntry" component={ NoteScreen } />  
-        <Route path="/" component={ JournalEntries } />
+      <Switch>  
+
+        {
+          (notes.length >= 1) 
+            ? (<Route exact path="/home" component={ JournalEntries } />)
+            : (<Route exact path="/home" component={ NothingSelected } />)
+        } 
+
+        <Route exact path="/newEntry" component={ NoteScreen } />   
       </Switch>  
                   
       </SimpleGrid>

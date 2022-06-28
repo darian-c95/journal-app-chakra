@@ -9,13 +9,14 @@ import {
     FormLabel,
     Icon,
     Input, 
-    Stack, 
+    Stack,
+    Spinner,
     useColorModeValue as mode,
   } from '@chakra-ui/react'
 
 import { FcGoogle } from 'react-icons/fc' 
 import * as React from 'react'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 
 import { DividerWithText } from './DividerWithText'
 import { useForm } from '../../hooks/useForm' 
@@ -26,9 +27,11 @@ export const LoginScreen = () => {
 
     const dispatch = useDispatch();
 
+    const {loading} = useSelector( state => state.ui ); 
+
     const [formValues, handleInputChange] = useForm({
         email: 'bullion@gmail.com',
-        password: '654321'
+        password: '76543210'
     });
 
     const {email, password} = formValues;
@@ -89,8 +92,9 @@ export const LoginScreen = () => {
                         /> 
                     </FormControl>
 
-                    <Button type="submit" colorScheme="blue" size="lg" fontSize="md">
+                    <Button type="submit" colorScheme="blue" size="lg" fontSize="md" disabled={loading}>
                         Sign in
+                        {loading && <Spinner ml={3} />}
                     </Button>
                     
                     <DividerWithText />
@@ -105,6 +109,7 @@ export const LoginScreen = () => {
     </Flex>
   )
 } 
+// as="a" href='/'
  
 
 
