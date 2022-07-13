@@ -75,7 +75,7 @@ export const RegisterScreen = () => {
         <Text mb={8}>Already have an account? <Link color='blue.600' href='/auth/login'>Log in</Link></Text>
         
         <Box
-            w='md'
+            w={{md: 'md', sm: 'sm', base: 'xs'}} 
             bg={{ md: mode('white', 'gray.700') }}
             rounded={{ md: 'xl' }}
             p={{ base: '4', md: '10' }}

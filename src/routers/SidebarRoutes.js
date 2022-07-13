@@ -17,10 +17,10 @@ export const SidebarRoutes = () => {
     <Grid
       bg='#F7FAFC'
       color='black'
-      h={{base: 'auto', md: '100vh'}} 
-      w='100vw'
-      templateRows={{base: '100px 1fr', md: '1fr'}}  
-      templateColumns= {{base: '1fr', md: '320px 1fr'}}  
+      h={{md: '100vh', base: 'auto'}} 
+      w='100vw' 
+      templateRows={{md: '1fr', sm: '35vh 1fr', base: '45vh 1fr'}}  
+      templateColumns= {{md: '320px 1fr', base: '1fr'}}  
     >
       <Siderbar rowSpan={1} colSpan={1} /> 
 

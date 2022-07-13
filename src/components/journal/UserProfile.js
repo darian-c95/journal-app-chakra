@@ -1,4 +1,4 @@
-import { Avatar, Flex, Stack, VStack, Text } from '@chakra-ui/react'
+import { Avatar, Flex, VStack, Text } from '@chakra-ui/react'
 import * as React from 'react' 
 import { useSelector } from 'react-redux';
 

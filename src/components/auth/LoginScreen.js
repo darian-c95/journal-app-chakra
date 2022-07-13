@@ -58,7 +58,7 @@ export const LoginScreen = () => {
 
         <Box
             bg={{ md: mode('white', 'gray.700') }}
-            w='md'
+            w={{md: 'md', sm: 'sm', base: 'xs'}}  
             rounded={{ md: 'xl' }}
             p={{ base: '4', md: '10' }}
             borderWidth={{ md: '1px' }}
@@ -108,8 +108,7 @@ export const LoginScreen = () => {
         </Box>
     </Flex>
   )
-} 
-// as="a" href='/'
+}  
  
 
 

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { 
-  Box, 
+  Box,
+  Flex, 
   Button, 
   HStack, 
   Icon, 
@@ -19,9 +20,9 @@ import {
 } from '@chakra-ui/react'
 import moment from 'moment';
 
-import { GoCalendar } from 'react-icons/go' 
-import { RiDeleteBin5Line } from 'react-icons/ri' 
-import { FiEdit } from 'react-icons/fi' 
+import { GoCalendar } from 'react-icons/go'; 
+import { RiDeleteBin5Line } from 'react-icons/ri'; 
+import { FiEdit } from 'react-icons/fi'; 
 import { useDispatch, useSelector } from 'react-redux';
 import { activeNote, startDeleting, startSaveNote } from '../../actions/notes';
 import { useForm } from '../../hooks/useForm';  
@@ -32,7 +33,7 @@ export const JournalEntry = ({id, date, title, body, url}) => {
   const dispatch = useDispatch();
   const {active} = useSelector( state => state.notes );       
  
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const noteDate = moment(date); 
   
@@ -88,7 +89,7 @@ export const JournalEntry = ({id, date, title, body, url}) => {
           shadow={{
             md: 'base',
           }}
-          > 
+        > 
 
         <Stack>
           {
@@ -103,12 +104,12 @@ export const JournalEntry = ({id, date, title, body, url}) => {
           }
         </Stack>
           
-          <Box p={2}> 
-            <Text as="h2" fontWeight="bold" fontSize="xl"> 
-              {title}
-            </Text> 
+          <Flex p={2} direction='column' h='18vh' justifyContent='space-between'> 
 
             <Box fontSize="sm">
+              <Text as="h2" fontWeight="bold" fontSize="xl"> 
+                {title}
+              </Text> 
               <Text noOfLines={[1, 2, 3]}>
                 {body}
               </Text> 
@@ -126,7 +127,7 @@ export const JournalEntry = ({id, date, title, body, url}) => {
               <Text>{noteDate.format('dddd')},</Text>
               <Text fontWeight='medium'>{noteDate.format('Do')}</Text>
             </HStack>
-          </Box> 
+          </Flex> 
         </Stack> 
       </Box> 
 

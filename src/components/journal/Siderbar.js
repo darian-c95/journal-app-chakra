@@ -6,12 +6,11 @@ import { UserProfile } from './UserProfile'
 
 
 export const Siderbar = () => {
-
-  
+ 
   
   return (
-    <Flex
-        h={{base: '35vh', md: '100vh'}}     
+    <Flex     
+        h={{md: '100vh', sm: '35vh', base: '47vh'}}     
         direction= 'column'
         bg="#49081F"
         color="white"
@@ -19,7 +18,7 @@ export const Siderbar = () => {
         py={8}
         position={{base: 'inherit', md: 'fixed'}}
         width={{base: 'auto', md: '320px'}}
-        alignItems={{base: 'center', md: 'inherit'}} 
+        alignItems={{md: 'inherit', sm: 'center', base: 'center'}} 
     >
         <Box mb={8}> 
         <Heading>Journal App</Heading>
@@ -36,8 +35,7 @@ export const Siderbar = () => {
           borderRadius="md"
           transition="all 0.3s"
           fontWeight="medium"
-          lineHeight="1.5rem"
-          // aria-current={isActive ? 'page' : undefined}
+          lineHeight="1.5rem" 
           color="whiteAlpha.900"
           _hover={{
             bg: 'pink.900',

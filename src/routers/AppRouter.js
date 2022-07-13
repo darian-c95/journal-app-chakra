@@ -46,7 +46,7 @@ export const AppRouter = () => {
 
     if(cheking) {
         return (
-            <Flex 
+            <Flex  
                 bg='#F7FAFC'
                 h='100vh'   
                 flexDirection='column'

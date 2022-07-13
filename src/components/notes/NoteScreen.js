@@ -59,17 +59,18 @@ export const NoteScreen = () => {
 
     return ( 
         <Flex 
-            h='100vh'
-            w='auto'
-            justifyContent='center'
-            alignItems='center'
+            flexDirection={{md: 'row', base:'column'}}   
+            h={{md: '100vh', sm: '60vh', base: '90vh'}}     
+            w={{md: 'auto', sm: 'auto', base: '100%'}}  
+            justifyContent={{md: 'center', base:'center'}} 
+            alignItems='center' 
         >
             
             <Box
                 bg='white'  
-                w='xl'
-                rounded={{ md: 'xl' }}
-                p={{ base: '4', md: '16' }}
+                w={{md: 'xl', sm: 'xl', base: 'xs'}}
+                rounded='xl'
+                p={{ md: '16', sm: '8', base: '6'}}
                 shadow={{ md: 'lg' }} 
             >
                 <Heading as='h3' size='lg' fontWeight='medium'>Write a new note</Heading>
